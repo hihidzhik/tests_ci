@@ -41,17 +41,16 @@ jobs:
       run: |
         python -m pytest tests/api/test_get_movies.py::TestGetMovies::test_get_movies_default -v --alluredir=allure-results
       
-    - name: Upload Allure results
-      uses: actions/upload-artifact@v4
-      with:
-        name: allure-results
-        path: allure-results/
-        retention-days: 5
-
     - name: Generate Allure report
       if: always()
       run: |
         allure generate allure-results -o allure-report --clean
-      
+
+    - name: Upload Allure report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: allure-report
+        path: allure-report/
 
 
