@@ -51,12 +51,7 @@ jobs:
     - name: Generate Allure report
       if: always()
       run: |
-        if [ -d "allure-results" ]; then
-          allure generate allure-results -o allure-report --clean
-        else
-          echo "No allure-results directory, skipping report generation"
-        fi
-
+        allure generate allure-results -o allure-report --clean
       
 
 
